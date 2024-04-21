@@ -36,7 +36,11 @@ function* workGetWordsFetch(): unknown {
 
 function* workGetRandomWord(): unknown {
   try {
-    const random = String(Math.floor(Math.random() * 5));
+    const data = yield call(() => fetchData());
+    //fishy solution ...
+    const count = data.length;
+
+    const random = String(Math.floor(Math.random() * count));
 
     const word = yield call(() => fetchOne(random));
     // console.log(word);

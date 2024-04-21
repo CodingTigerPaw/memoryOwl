@@ -1,7 +1,7 @@
-import { useMemo } from "react";
+//import { useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
-  getAllWordsFetch,
+  // getAllWordsFetch,
   getRandomWordFetch,
 } from "../../redux/slices/wordsSlices";
 import Card from "./components/Card";
@@ -12,9 +12,9 @@ const Home = () => {
   //  const words = useAppSelector((state) => state.words.words);
   const randomWord = useAppSelector((state) => state.words.randomWord);
 
-  useMemo(() => {
-    dispatch(getAllWordsFetch());
-  }, [dispatch]);
+  // useMemo(() => {
+  //   dispatch(getAllWordsFetch());
+  // }, [dispatch]);
 
   return (
     <div className="flex justify-around flex-wrap">
