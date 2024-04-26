@@ -1,30 +1,24 @@
-//import { useMemo } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import {
-  // getAllWordsFetch,
-  getRandomWordFetch,
-} from "../../redux/slices/wordsSlices";
+import { useState } from "react";
+import { useWordsIds } from "../../hooks/dispatch";
 import Card from "./components/Card";
+import { useAppSelector } from "../../hooks/redux";
+import { Word } from "../../redux/slices/types";
 
 const Home = () => {
-  const dispatch = useAppDispatch();
+  const ids = useWordsIds();
+  const allWord = useAppSelector((state) => state.words.words);
+  const [data, setData] = useState<Word | null>();
 
-  //  const words = useAppSelector((state) => state.words.words);
-  const randomWord = useAppSelector((state) => state.words.randomWord);
-
-  // useMemo(() => {
-  //   dispatch(getAllWordsFetch());
-  // }, [dispatch]);
+  const randomId = () => {
+    const count = ids.length;
+    const random = Math.floor(Math.random() * count);
+    setData(allWord[random]);
+  };
 
   return (
     <div className="flex justify-around flex-wrap">
-      {/* {words.map((el) => (
-        <Card key={el.id} polish={el.polish} english={el.english} />
-      ))} */}
-      <button onClick={() => dispatch(getRandomWordFetch())}>get Word</button>
-      {randomWord ? (
-        <Card polish={randomWord?.polish} english={randomWord?.english} />
-      ) : null}
+      <button onClick={() => randomId()}>get Word</button>
+      {data ? <Card polish={data?.polish} english={data?.english} /> : null}
     </div>
   );
 };

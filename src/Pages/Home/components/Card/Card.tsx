@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 type Props = {
-  english: string;
-  polish: string;
+  english: string | null;
+  polish: string | null;
 };
 
 export const Card = ({ polish, english }: Props) => {
