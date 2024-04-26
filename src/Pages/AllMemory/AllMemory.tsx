@@ -1,21 +1,19 @@
-import React, { useMemo } from "react";
+import { useEffect } from "react";
 import { getAllWordsFetch } from "../../redux/slices/wordsSlices";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import AllMemoryList from "./components/AllMemoryList";
 const AllMemory = () => {
   const dispatch = useAppDispatch();
 
   const allWords = useAppSelector((state) => state.words.words);
 
-  useMemo(() => {
+  useEffect(() => {
     dispatch(getAllWordsFetch());
-    //console.log(allWords);
   }, [dispatch]);
 
   return (
     <div>
-      {allWords.map((el) => (
-        <div key={el.id}>{el.english}</div>
-      ))}
+      <AllMemoryList list={allWords} />
     </div>
   );
 };
