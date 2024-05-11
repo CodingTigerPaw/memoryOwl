@@ -1,4 +1,6 @@
 import "./App.css";
+//!not used Component, look on RouterRoot component
+
 //import type { RootState } from "./redux/store";
 //import { useSelector, useDispatch } from "react-redux";
 //import { decrement, increment } from "./redux/slices/counterSlice";
@@ -16,7 +18,6 @@ const App = () => {
       <div className="container mx-auto h-full">
         <Outlet />
       </div>
-      <footer className=" bg-gray-500 mb-auto ">footer</footer>
     </div>
   );
 };

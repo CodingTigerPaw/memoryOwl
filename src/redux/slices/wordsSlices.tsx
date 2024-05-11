@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { state, WordsSlice, Word } from "./types";
 
-const initialState: state = {
+export const initialState: state = {
   words: [],
   randomWord: null,
   newData: null,
@@ -22,14 +22,14 @@ export const wordsSlice = createSlice({
       state.isLoading = false;
       state.words = action.payload;
     },
-    getRandomWordFetch: (state) => {
-      state.isLoading = true;
-    },
-    getRandomWordSuccess: (state, action: PayloadAction<WordsSlice[]>) => {
-      const oneWord = action.payload[0];
-      state.isLoading = false;
-      state.randomWord = oneWord;
-    },
+    // getRandomWordFetch: (state) => {
+    //   state.isLoading = true;
+    // },
+    // getRandomWordSuccess: (state, action: PayloadAction<WordsSlice[]>) => {
+    //   const oneWord = action.payload[0];
+    //   state.isLoading = false;
+    //   state.randomWord = oneWord;
+    // },
     postWord: (state, action: PayloadAction<Word>) => {
       state.isLoading = true;
       state.newData = action.payload;
@@ -45,8 +45,6 @@ export const wordsSlice = createSlice({
     deleteWordsSucces: (state, action) => {
       state.isLoading = false;
       state.words = state.words.filter((word) => word.id !== action.payload);
-
-      console.log("succes");
     },
   },
 });
@@ -54,8 +52,8 @@ export const wordsSlice = createSlice({
 export const {
   getAllWordsFetch,
   WordsAllSuccess,
-  getRandomWordFetch,
-  getRandomWordSuccess,
+  //getRandomWordFetch,
+  //getRandomWordSuccess,
   postWord,
   PostWordSucces,
   deleteWord,
