@@ -1,7 +1,7 @@
 import { all } from "redux-saga/effects";
 import {
   WordsSaga,
-  RandomWordsSaga,
+  // RandomWordsSaga,
   WatchPostWord,
   WatchDeleteWord,
 } from "./wordsSaga";
@@ -9,7 +9,7 @@ import {
 function* RootSaga() {
   yield all([
     WordsSaga(),
-    RandomWordsSaga(),
+    // RandomWordsSaga(),
     WatchPostWord(),
     WatchDeleteWord(),
   ]);

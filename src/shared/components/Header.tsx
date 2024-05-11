@@ -4,6 +4,9 @@ const Header = () => {
       <div className=" ml-10 mt-4">
         <a href="/">Home</a>
       </div>
+      <div className="ml-10 mt-4">
+        <a href="/memory">Start</a>
+      </div>
       <div className=" ml-10 mt-4">
         <a href="/new">Add Memory</a>
       </div>

@@ -1,26 +1,12 @@
 import { WordsSlice } from "../../../redux/slices/types";
-import { useAppDispatch } from "../../../hooks/redux";
-import { deleteWord } from "../../../redux/slices/wordsSlices";
+import Memory from "./Memory.tsx";
 
 type Props = {
   list: WordsSlice[];
 };
 
 const AllMemoryList = ({ list }: Props) => {
-  const dispatch = useAppDispatch();
-  return list.map((el: WordsSlice) => (
-    <div key={el.id}>
-      <div>{el.english}</div>
-      <div>{el.polish}</div>
-      <button
-        onClick={() => {
-          dispatch(deleteWord(el.id));
-        }}
-      >
-        Delete
-      </button>
-    </div>
-  ));
+  return list.map((el: WordsSlice) => <Memory memory={el} key={el.id} />);
 };
 
 export default AllMemoryList;

@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home/Home.tsx";
 import { NewMemory } from "./Pages/NewMemory/NewMemory.tsx";
 import AllMemory from "./Pages/AllMemory/AllMemory.tsx";
+import Memory from "./Pages/Memory/Memory.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "new/", element: <NewMemory /> },
       { path: "all/", element: <AllMemory /> },
+      { path: "memory/", element: <Memory /> },
     ],
   },
 ]);

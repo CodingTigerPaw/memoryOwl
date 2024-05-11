@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { getAllWordsFetch } from "../../redux/slices/wordsSlices";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import AllMemoryList from "./components/AllMemoryList";
+import { CSSstyles } from "./styles";
 const AllMemory = () => {
   const dispatch = useAppDispatch();
 
@@ -12,7 +13,7 @@ const AllMemory = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={CSSstyles.allMemoryList}>
       <AllMemoryList list={allWords} />
     </div>
   );
