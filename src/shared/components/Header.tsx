@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="flex bg-orange-600 w-full h-16">
       <div className=" ml-10 mt-4">
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </div>
       <div className="ml-10 mt-4">
-        <a href="/memory">Start</a>
+        <Link to="/memory">Start</Link>
       </div>
       <div className=" ml-10 mt-4">
-        <a href="/new">Add Memory</a>
+        <Link to="/new">Add Memory</Link>
       </div>
       <div className=" ml-10 mt-4">
-        <a href="/all">All memories</a>
+        <Link to="/all">All memories</Link>
       </div>
     </div>
   );

@@ -3,9 +3,18 @@ type Props = {
   polish: string | null;
   display: boolean;
   setDisplay: (display: boolean) => void;
+  setCorrect: () => void;
+  setIncorrect: () => void;
 };
 
-export const Card = ({ polish, english, display, setDisplay }: Props) => {
+export const Card = ({
+  polish,
+  english,
+  display,
+  setDisplay,
+  setCorrect,
+  setIncorrect,
+}: Props) => {
   const showHideWord = () => {
     setDisplay(!display);
   };
@@ -27,10 +36,12 @@ export const Card = ({ polish, english, display, setDisplay }: Props) => {
       >{`${display ? "Show Word" : "Hide Word"}`}</button>
       <div className={`${display ? "invisible" : null}`}>
         <p>correct?: </p>
-        <button data-testid="confirmButton" onClick={() => console.log("true")}>
+        <button data-testid="confirmButton" onClick={setCorrect}>
           Yes
         </button>
-        <button data-testid="declineButton">No</button>
+        <button data-testid="declineButton" onClick={setIncorrect}>
+          No
+        </button>
       </div>
     </div>
   );

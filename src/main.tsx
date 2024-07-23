@@ -11,6 +11,7 @@ import Home from "./Pages/Home/Home.tsx";
 import { NewMemory } from "./Pages/NewMemory/NewMemory.tsx";
 import AllMemory from "./Pages/AllMemory/AllMemory.tsx";
 import Memory from "./Pages/Memory/Memory.tsx";
+import Modal from "./shared/components/modals/Modal.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,10 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "new/", element: <NewMemory /> },
+      // { path: "new/", element: <Modal /> },
       { path: "all/", element: <AllMemory /> },
       { path: "memory/", element: <Memory /> },
+      { path: "modal/", element: <Modal /> },
     ],
   },
 ]);
