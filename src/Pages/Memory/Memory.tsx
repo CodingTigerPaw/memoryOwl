@@ -2,13 +2,16 @@ import { useState } from "react";
 import { useWordsIds } from "../../hooks/dispatch";
 import Card from "./components/Card";
 import { useAppSelector } from "../../hooks/redux";
-import { Word } from "../../redux/slices/types";
+import { Word, WordHistory } from "../../redux/slices/types";
+import CardHistory from "./components/CardHistory/CardHistory";
 
 const Memory = () => {
+  const [quiz, setQuiz] = useState(false);
   const ids = useWordsIds();
   const allWord = useAppSelector((state) => state.words.words);
   const [data, setData] = useState<Word | null>();
   const [display, setDisplay] = useState(true);
+  const [history, setHistory] = useState<unknown>([]);
 
   const randomId = () => {
     const count = ids.length;
@@ -17,7 +20,24 @@ const Memory = () => {
     setDisplay(true);
   };
 
-  return (
+  const correctAnwser = () => {
+    const answer: WordHistory = {
+      word: data,
+      correct: true,
+    };
+    setHistory([...history, answer]);
+    randomId();
+  };
+  const incorrectAnwers = () => {
+    const answer: WordHistory = {
+      word: data,
+      correct: false,
+    };
+    setHistory([...history, answer]);
+    randomId();
+  };
+
+  return quiz ? (
     <div>
       <div className="flex flex-col content-center flex-wrap">
         <button
@@ -34,10 +54,19 @@ const Memory = () => {
             english={data?.english}
             display={display}
             setDisplay={setDisplay}
+            setCorrect={correctAnwser}
+            setIncorrect={incorrectAnwers}
           />
         ) : null}
       </div>
       <div className="text-lg text-center">History:</div>
+      {history.map((el) => (
+        <CardHistory word={el} />
+      ))}
+    </div>
+  ) : (
+    <div>
+      <button onClick={() => setQuiz(true)}>Start?</button>
     </div>
   );
 };

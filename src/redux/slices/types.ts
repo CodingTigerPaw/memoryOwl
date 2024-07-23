@@ -16,3 +16,8 @@ export interface Word {
   english: null | string;
   polish: null | string;
 }
+
+export interface WordHistory {
+  word: Word | undefined | null;
+  correct: boolean;
+}
