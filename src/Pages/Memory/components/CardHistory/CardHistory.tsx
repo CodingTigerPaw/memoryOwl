@@ -1,4 +1,3 @@
-import React from "react";
 import { WordHistory } from "../../../../redux/slices/types";
 
 type Props = { word: WordHistory };

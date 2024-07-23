@@ -11,7 +11,7 @@ const Memory = () => {
   const allWord = useAppSelector((state) => state.words.words);
   const [data, setData] = useState<Word | null>();
   const [display, setDisplay] = useState(true);
-  const [history, setHistory] = useState<unknown>([]);
+  const [history, setHistory] = useState<WordHistory[]>([]);
 
   const randomId = () => {
     const count = ids.length;
@@ -25,6 +25,7 @@ const Memory = () => {
       word: data,
       correct: true,
     };
+    // eslint-disable-next-line
     setHistory([...history, answer]);
     randomId();
   };
@@ -33,6 +34,7 @@ const Memory = () => {
       word: data,
       correct: false,
     };
+    // eslint-disable-next-line
     setHistory([...history, answer]);
     randomId();
   };
@@ -60,6 +62,7 @@ const Memory = () => {
         ) : null}
       </div>
       <div className="text-lg text-center">History:</div>
+
       {history.map((el) => (
         <CardHistory word={el} />
       ))}
